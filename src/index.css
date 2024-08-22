@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  label {
+    @apply block text-gray-700 text-sm font-bold mb-2;
+  }
+  input {
+    @apply shadow appearance-none border border-gray-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded border overflow-hidden shadow-lg p-4;
+  }
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white;
+  }
+  .pill {
+    @apply px-2 flex items-center bg-gray-200 rounded-lg py-1 text-sm font-semibold text-gray-700;
+  }
+}
