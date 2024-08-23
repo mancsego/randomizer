@@ -8,7 +8,7 @@ export default function EntityList() {
   return (
     <div className="card flex flex-col items-center">
       <h1>Team members:</h1>
-      <div className="flex flex-wrap gap-1">
+      <div className="flex flex-wrap gap-1 min-h-24">
         {Object.entries(entities).map(([id, { name, enabled }]) => (
           <span className="pill" key={id}>
             <span className="mr-2">{name}</span>
