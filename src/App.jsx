@@ -1,5 +1,6 @@
 import AddEntity from './components/AddEntity'
 import EntityList from './components/EntityList'
+import GroupsOf from './components/GroupsOf'
 import PickOne from './components/PickOne'
 import RandomOrder from './components/RandomOrder'
 import { useEntityStore } from './store/entities'
@@ -9,13 +10,14 @@ function App() {
 
   load()
   return (
-    <div className="prose max-w-full flex flex-col justify-center mx-32">
+    <div className="prose flex flex-col items-center mx-auto">
       <EntityList />
       <AddEntity />
-      <div className="mt-2">
-        <div className="flex gap-3">
+      <div className="card py-5">
+        <div className="flex flex-wrap gap-3">
           <RandomOrder />
           <PickOne />
+          <GroupsOf />
         </div>
       </div>
     </div>

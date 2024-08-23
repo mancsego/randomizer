@@ -36,11 +36,9 @@ export default function GroupsOf() {
   return (
     <div>
       <div className="flex">
-        <div>
-          <Button className="btn btn-primary" onClick={getRanges}>
-            Give me
-          </Button>
-        </div>
+        <Button className="btn btn-primary" onClick={getRanges}>
+          Give me
+        </Button>
         <div className="">
           <Listbox value={clusterLength} onChange={setClusterLength}>
             <ListboxButton

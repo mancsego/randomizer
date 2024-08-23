@@ -12,8 +12,8 @@ export default function EntityList() {
         {Object.entries(entities).map(([id, { name, enabled }]) => (
           <span className="pill" key={id}>
             <span className="mr-2">{name}</span>
-            <Remove id={id} />
             <Enabler id={id} value={enabled} />
+            <Remove id={id} />
           </span>
         ))}
       </div>
