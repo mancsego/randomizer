@@ -1,7 +1,6 @@
 import { addEntity, loadEntities, removeEntity, updateEntity } from '@/util/Handler'
 import { create } from 'zustand'
 
-//entities
 const useEntityStore = create((set, get) => ({
   entities: {},
   getEnabled: () => {
