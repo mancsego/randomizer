@@ -13,7 +13,7 @@ function App() {
     <div className="prose flex flex-col items-center mx-auto">
       <EntityList />
       <AddEntity />
-      <div className="card py-5">
+      <div className="card">
         <div className="flex flex-wrap gap-3">
           <RandomOrder />
           <PickOne />
