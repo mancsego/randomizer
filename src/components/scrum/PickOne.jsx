@@ -1,7 +1,7 @@
 import { useEntityStore } from '@/store/entities'
 import { Button } from '@headlessui/react'
 import { lazy, Suspense, useState } from 'react'
-const Entity = lazy(() => import('./Entity'))
+const Entity = lazy(() => import('@/components/Entity'))
 
 export default function PickOne() {
   const getEnabled = useEntityStore((state) => state.getEnabled)

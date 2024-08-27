@@ -1,6 +1,6 @@
 import Enabler from '@/components/Enabler'
 import Remove from '@/components/Remove'
-import { useEntityStore } from '../store/entities'
+import { useEntityStore } from '@/store/entities'
 
 export default function EntityList() {
   const entities = useEntityStore((state) => state.entities)
