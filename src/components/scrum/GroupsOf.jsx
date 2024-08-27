@@ -39,7 +39,7 @@ export default function GroupsOf() {
         <Button className="btn btn-primary" onClick={getRanges}>
           Give me
         </Button>
-        <div className="">
+        <div>
           <Listbox value={clusterLength} onChange={setClusterLength}>
             <ListboxButton
               className={clsx(
