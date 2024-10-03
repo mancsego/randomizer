@@ -1,10 +1,10 @@
 import AddEntity from '@/components/AddEntity'
 import EntityList from '@/components/EntityList'
+import AwkwardTimer from '@/components/scrum/AwkwardTimer'
 import GroupsOf from '@/components/scrum/GroupsOf'
 import PickOne from '@/components/scrum/PickOne'
 import RandomOrder from '@/components/scrum/RandomOrder'
 import { useEntityStore } from '@/store/entities'
-import AwkwardTimer from './components/scrum/AwkwardTimer'
 
 function App() {
   const load = useEntityStore((state) => state.fetch)
