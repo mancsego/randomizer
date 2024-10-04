@@ -62,8 +62,7 @@ const remove = async (id) => {
   }
 
   const db = _loadLocal()
-  const { [id]: _, updated } = db
-  console.log(source, _, updated)
+  const { [id]: _, ...updated } = db
 
   localStorage.setItem(LOCAL_KEY, JSON.stringify(updated ?? {}))
 }
