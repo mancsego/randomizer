@@ -1,7 +1,16 @@
+import { Entity } from '@/Types'
 import { addEntity, loadEntities, removeEntity, updateEntity } from '@/util/Handler'
 import { create } from 'zustand'
 
-const useEntityStore = create((set, get) => ({
+type EntityStore = {
+  entities: Record<string, Entity>
+  fetch: () => void
+  add: (name: string) => void
+  update: (id: string, enabled: boolean) => void
+  remove: (id: string) => void
+}
+
+const useEntityStore = create<EntityStore>((set, get) => ({
   entities: {},
   getEnabled: () => {
     const { entities } = get()
@@ -12,7 +21,7 @@ const useEntityStore = create((set, get) => ({
 
     set({ entities })
   },
-  add: async (name) => {
+  add: async (name: string) => {
     const newEntity = { name, enabled: true }
     const { entities } = get()
 
@@ -23,7 +32,7 @@ const useEntityStore = create((set, get) => ({
       console.error(e)
     }
   },
-  remove: async (id) => {
+  remove: async (id: string) => {
     const { entities } = get()
 
     try {
@@ -34,7 +43,7 @@ const useEntityStore = create((set, get) => ({
       console.error(e)
     }
   },
-  update: async (id, enabled) => {
+  update: async (id: string, enabled: boolean) => {
     const { entities } = get()
 
     const updated = { ...entities[id], enabled }
