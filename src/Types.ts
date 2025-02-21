@@ -1,3 +1,3 @@
-type Entity = { enabled: boolean; name: string }
+type EntityType = { enabled: boolean; name: string }
 
-export type { Entity }
+export type { EntityType }

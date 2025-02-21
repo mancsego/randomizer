@@ -3,10 +3,10 @@ import { Button, Field, Input, Label } from '@headlessui/react'
 import { useRef, useState } from 'react'
 
 export default function AddEntity() {
-  const inputRef = useRef(null)
+  const inputRef = useRef<HTMLInputElement>(null)
   const addEntity = useEntityStore((state) => state.add)
   const [name, setName] = useState('')
-  const handleSubmit = (key) => {
+  const handleSubmit = (key: string) => {
     if (key !== 'Enter') return
 
     add()
@@ -15,7 +15,7 @@ export default function AddEntity() {
     if (!name) return
     addEntity(name)
     setName('')
-    inputRef.current.focus()
+    inputRef.current!.focus()
   }
   return (
     <div className="card">

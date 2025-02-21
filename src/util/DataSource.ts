@@ -1,4 +1,4 @@
-import { Entity } from '@/Types'
+import { EntityType } from '@/Types'
 import { initializeApp } from 'firebase/app'
 import { Database, get, getDatabase, push, ref, set } from 'firebase/database'
 
@@ -39,7 +39,7 @@ const load = async () => {
 
   return snapshot.val() ?? {}
 }
-const add = async (e: Entity): Promise<string> => {
+const add = async (e: EntityType): Promise<string> => {
   const { source } = _getDb()
 
   if (source) {
@@ -69,7 +69,7 @@ const remove = async (id: string) => {
   localStorage.setItem(LOCAL_KEY, JSON.stringify(updated ?? {}))
 }
 
-const update = async (id: string, e: Entity) => {
+const update = async (id: string, e: EntityType) => {
   const { source } = _getDb()
 
   if (source) {
