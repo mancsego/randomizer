@@ -1,5 +1,6 @@
+import { Entity } from '@/Types'
 import { initializeApp } from 'firebase/app'
-import { get, getDatabase, push, ref, set } from 'firebase/database'
+import { Database, get, getDatabase, push, ref, set } from 'firebase/database'
 
 const LOCAL_KEY = 'db'
 const USERS = 'users'
@@ -18,7 +19,7 @@ const _getDb = (() => {
   }
 
   const app = import.meta.env.VITE_DATABASE_URL ? initializeApp(firebaseConfig) : null
-  let db
+  let db: undefined | { source: Database | null }
 
   return () => {
     if (db) return db
@@ -38,22 +39,22 @@ const load = async () => {
 
   return snapshot.val() ?? {}
 }
-const add = async (e) => {
+const add = async (e: Entity): Promise<string> => {
   const { source } = _getDb()
 
   if (source) {
     const { key } = push(ref(source, USERS))
     await set(ref(source, `${USERS}/${key}`), e)
-    return key
+    return key as string
   }
 
-  const key = Date.now()
+  const key = `${Date.now()}`
   localStorage.setItem(LOCAL_KEY, JSON.stringify({ ..._loadLocal(), [key]: e }))
 
   return key
 }
 
-const remove = async (id) => {
+const remove = async (id: string) => {
   const { source } = _getDb()
 
   if (source) {
@@ -68,7 +69,7 @@ const remove = async (id) => {
   localStorage.setItem(LOCAL_KEY, JSON.stringify(updated ?? {}))
 }
 
-const update = async (id, e) => {
+const update = async (id: string, e: Entity) => {
   const { source } = _getDb()
 
   if (source) {
