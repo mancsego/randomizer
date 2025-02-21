@@ -1,4 +1,5 @@
 import { useEntityStore } from '@/store/entities'
+import { EntityType } from '@/Types'
 import { Button, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react'
 import clsx from 'clsx'
 import { lazy, Suspense, useEffect, useState } from 'react'
@@ -7,7 +8,7 @@ const EntityContainer = lazy(() => import('@/components/EntityContainer'))
 export default function GroupsOf() {
   const [options, setOptions] = useState([1])
   const [clusterLength, setClusterLength] = useState(options[0])
-  const [cluster, setCluster] = useState([])
+  const [cluster, setCluster] = useState<EntityType[][]>([])
   const getEnabled = useEntityStore((state) => state.getEnabled)
   const entities = useEntityStore((state) => state.entities)
 
@@ -20,7 +21,7 @@ export default function GroupsOf() {
 
     const length = data.length
 
-    let clusters = []
+    let clusters: EntityType[][] = []
     for (let i = 0; i < length; i += clusterLength) {
       clusters = [...clusters, data.slice(i, i + clusterLength)]
     }
@@ -31,7 +32,7 @@ export default function GroupsOf() {
   useEffect(() => {
     const length = getEnabled().length + 1
     setOptions([...Array(length).keys()].slice(1))
-  }, [entities])
+  }, [getEnabled, entities])
 
   return (
     <div>

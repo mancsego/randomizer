@@ -1,13 +1,14 @@
-import { Entity } from '@/Types'
+import { EntityType } from '@/Types'
 import { addEntity, loadEntities, removeEntity, updateEntity } from '@/util/Handler'
 import { create } from 'zustand'
 
 type EntityStore = {
-  entities: Record<string, Entity>
+  entities: Record<string, EntityType>
   fetch: () => void
   add: (name: string) => void
   update: (id: string, enabled: boolean) => void
   remove: (id: string) => void
+  getEnabled: () => EntityType[]
 }
 
 const useEntityStore = create<EntityStore>((set, get) => ({

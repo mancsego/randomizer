@@ -1,11 +1,12 @@
 import { useEntityStore } from '@/store/entities'
+import { EntityType } from '@/Types'
 import { Button } from '@headlessui/react'
 import { lazy, Suspense, useState } from 'react'
 const EntityContainer = lazy(() => import('@/components/EntityContainer'))
 
 export default function RandomOrder() {
   const getEnabled = useEntityStore((state) => state.getEnabled)
-  const [ordered, setOrdered] = useState([])
+  const [ordered, setOrdered] = useState<EntityType[]>([])
 
   const toOrdered = () => {
     const data = Object.values(getEnabled())

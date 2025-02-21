@@ -1,13 +1,12 @@
 import { useEntityStore } from '@/store/entities'
 import { Switch } from '@headlessui/react'
-import PropTypes from 'prop-types'
 import { useState } from 'react'
 
-export default function Enabler({ id, value }) {
+export default function Enabler({ id, value }: { id: string; value: boolean }) {
   const update = useEntityStore((state) => state.update)
   const [enabled, setEnabled] = useState(value)
 
-  const handler = async (v) => {
+  const handler = async (v: boolean) => {
     await update(id, v)
     setEnabled(v)
   }
@@ -23,9 +22,4 @@ export default function Enabler({ id, value }) {
       />
     </Switch>
   )
-}
-
-Enabler.propTypes = {
-  id: PropTypes.string.isRequired,
-  value: PropTypes.bool.isRequired
 }

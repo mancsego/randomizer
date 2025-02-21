@@ -1,7 +1,7 @@
 import Entity from '@/components/Entity'
-import PropTypes from 'prop-types'
+import { EntityType } from '@/Types'
 
-export default function EntityContainer({ entities }) {
+export default function EntityContainer({ entities }: { entities: EntityType[] }) {
   return (
     <ol>
       {entities.map(({ name }, i) => (
@@ -9,8 +9,4 @@ export default function EntityContainer({ entities }) {
       ))}
     </ol>
   )
-}
-
-EntityContainer.propTypes = {
-  entities: PropTypes.array.isRequired
 }

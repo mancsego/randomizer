@@ -1,11 +1,12 @@
 import { useEntityStore } from '@/store/entities'
+import { EntityType } from '@/Types'
 import { Button } from '@headlessui/react'
 import { lazy, Suspense, useState } from 'react'
-const Entity = lazy(() => import('./Entity'))
+const Entity = lazy(() => import('@/components/Entity'))
 
 export default function PickOne() {
   const getEnabled = useEntityStore((state) => state.getEnabled)
-  const [random, setRandom] = useState(null)
+  const [random, setRandom] = useState<EntityType | null>(null)
 
   const pick = () => {
     const entities = getEnabled()
